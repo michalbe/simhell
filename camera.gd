@@ -22,8 +22,7 @@ func _process(delta):
 		$inner_gimball.rotate_x(-camera_speed * delta)
 	if (Input.is_action_pressed("ui_down") and $inner_gimball.rotation.x < downmost_gimball_position):
 		$inner_gimball.rotate_x(camera_speed * delta)
-
-	print($inner_gimball.rotation)
+		
 
 func _input(event):
 	if event is InputEventMouseButton:
@@ -38,7 +37,7 @@ func _input(event):
 
 		if event.button_index == BUTTON_RIGHT:
 			is_dragged = event.is_pressed()
-
+	
 #	elif event is InputEventMouseMotion:
 #	TODO: IMPLEMENT DRAGGING HERE
 #		print("Mouse Motion at: ", event.position, is_dragged)

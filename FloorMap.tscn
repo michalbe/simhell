@@ -114,7 +114,7 @@ environment = SubResource( 1 )
 
 [node name="gimball" type="Spatial" parent="." index="2"]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform = Transform( 1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 0, 0, 0 )
 script = ExtResource( 3 )
 _sections_unfolded = [ "Transform" ]
 
@@ -133,7 +133,7 @@ v_offset = 0.0
 doppler_tracking = 0
 projection = 0
 current = false
-fov = 70.0
+fov = 45.0
 size = 1.0
 near = 0.05
 far = 1000.0
