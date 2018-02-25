@@ -119,6 +119,14 @@ editor/display_folded = true
 transform = Transform( 1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 0, 0, 0 )
 script = ExtResource( 3 )
 _sections_unfolded = [ "Transform" ]
+default_camera_x = 0
+default_camera_y = 0
+camera_speed = 0
+zoom_speed = 0
+topmost_gimball_position = 0
+downmost_gimball_position = 0
+max_zoom = 0
+min_zoom = 0
 
 [node name="inner_gimball" type="Spatial" parent="CameraGimball" index="0"]
 
