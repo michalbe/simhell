@@ -15,7 +15,7 @@ export var max_zoom = 0
 export var min_zoom = 0
 
 func _ready():
-	print(config)
+
 	var config_loaded = config.load("camera.ini")
 	if config_loaded == OK:
 		default_camera_y = config.load_value(default_camera_y, "defaults", "y")

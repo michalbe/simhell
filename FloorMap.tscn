@@ -93,7 +93,7 @@ size = 10
 [node name="GridMap" type="GridMap" parent="." index="0"]
 
 theme = ExtResource( 2 )
-cell_size = Vector3( 3, 3, 3 )
+cell_size = Vector3( 3, 0.3, 3 )
 cell_octant_size = 8
 cell_center_x = true
 cell_center_y = false
@@ -106,7 +106,8 @@ data = {
 }
 _sections_unfolded = [ "Cell" ]
 __meta__ = {
-"_editor_clip_": 0
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 0, 0 )
 }
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." index="1"]
