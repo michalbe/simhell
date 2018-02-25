@@ -2,16 +2,33 @@ extends Spatial
 
 # class member variables go here, for example:
 
-var camera_speed = 2
-var zoom_speed = 0.2
-var default_camera_x = -0.45
-var default_camera_y = 0.75
-var max_zoom = 3;
-var min_zoom = 0.5;
 var is_dragged = false
-var downmost_gimball_position = -0.191966
-var topmost_gimball_position = -1.32905
+var config = null
 
+var camera_speed
+var zoom_speed
+var topmost_gimball_position
+var downmost_gimball_position
+var max_zoom
+var min_zoom
+
+func _ready():
+	config = ConfigFile.new()
+	var config_loaded = config.load("res://Config/camera.ini")
+	if config_loaded == OK:
+		rotate_y(config.get_value("defaults", "y"))
+		$inner_gimball.rotate_x(config.get_value("defaults", "x"))
+		
+		camera_speed = config.get_value("speeds", "movement")
+		zoom_speed = config.get_value("speeds", "zoom")
+		downmost_gimball_position = config.get_value("limits", "downmost_gimball_position")
+		topmost_gimball_position = config.get_value("limits", "topmost_gimball_position")
+		max_zoom = config.get_value("limits", "max_zoom")
+		min_zoom = config.get_value("limits", "min_zoom")
+
+		set_process_input(true)
+		set_process(true)
+	
 func _process(delta):
 	if (Input.is_action_pressed("ui_left")):
 		rotate_y(camera_speed * delta)
@@ -44,9 +61,3 @@ func _input(event):
 #		move_local_x(event.relative_x)
 #		move_local_y(event.relative_y)
 
-func _ready():
-	rotate_y(default_camera_y)
-	$inner_gimball.rotate_x(default_camera_x)
-
-	set_process_input(true)
-	set_process(true)

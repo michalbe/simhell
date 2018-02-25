@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Game.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Root/Game.gd" type="Script" id=1]
 [ext_resource path="res://tiles/floor_tiles.meshlib" type="MeshLibrary" id=2]
-[ext_resource path="res://camera.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/Root/camera.gd" type="Script" id=3]
 [ext_resource path="res://StatePanel.tscn" type="PackedScene" id=4]
 
 [sub_resource type="Environment" id=1]
@@ -84,7 +84,7 @@ adjustment_contrast = 1.0
 adjustment_saturation = 1.0
 _sections_unfolded = [ "Ambient Light", "Background" ]
 
-[node name="Game" type="Spatial"]
+[node name="Game" type="Spatial" index="0"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00994015, 0.0120878, -0.00568175 )
 script = ExtResource( 1 )
@@ -113,18 +113,18 @@ __meta__ = {
 
 environment = SubResource( 1 )
 
-[node name="gimball" type="Spatial" parent="." index="2"]
+[node name="CameraGimball" type="Spatial" parent="." index="2"]
 
 editor/display_folded = true
 transform = Transform( 1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 0, 0, 0 )
 script = ExtResource( 3 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="inner_gimball" type="Spatial" parent="gimball" index="0"]
+[node name="inner_gimball" type="Spatial" parent="CameraGimball" index="0"]
 
 _sections_unfolded = [ "Transform" ]
 
-[node name="Camera" type="Camera" parent="gimball/inner_gimball" index="0"]
+[node name="Camera" type="Camera" parent="CameraGimball/inner_gimball" index="0"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20 )
 keep_aspect = 1
