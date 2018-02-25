@@ -6,7 +6,8 @@ var camera_speed = 2
 var zoom_speed = 0.2
 var default_camera_x = -0.45
 var default_camera_y = 0.75
-
+var max_zoom = 3;
+var min_zoom = 0.5;
 
 func _process(delta):
 	if (Input.is_action_pressed("ui_left")):
@@ -17,24 +18,17 @@ func _process(delta):
 		$inner_gimball.rotate_x(-camera_speed * delta)
 	if (Input.is_action_pressed("ui_down")):
 		$inner_gimball.rotate_x(camera_speed * delta)
-#	if Input.is_mouse_button_pressed(BUTTON_WHEEL_UP):
-#	if Input.is_action_just_pressed("ui_zoom_in"):
-#		print("HEYKA!")
-#		set_scale(get_scale() + Vector3(zoom_speed, zoom_speed, zoom_speed) * delta)
-##	if Input.is_action_just_pressed(BUTTON_RIGHT):
-#	if Input.is_action_just_pressed("ui_zoom_out"):
-#		set_scale(get_scale() - Vector3(zoom_speed, zoom_speed, zoom_speed) * delta)
-#	print("outer")
-#	print(get_rotation())
-#	print("inner")
-#	print($inner_gimball.get_rotation())
 	
 func _input(event):
-	if event.is_pressed() and not event.is_echo():
-		if event.button_index == BUTTON_WHEEL_UP and get_scale().x < 3:
-			set_scale(get_scale() + Vector3(zoom_speed, zoom_speed, zoom_speed))
-		if event.button_index == BUTTON_WHEEL_DOWN and get_scale().x > 0.5:
-			set_scale(get_scale() - Vector3(zoom_speed, zoom_speed, zoom_speed))
+	if event is InputEventMouseButton:
+		if event.is_pressed() and not event.is_echo():
+	#		Zoom OUT
+			if event.button_index and event.button_index == BUTTON_WHEEL_UP and get_scale().x < max_zoom:
+				set_scale(get_scale() + Vector3(zoom_speed, zoom_speed, zoom_speed))
+			
+	#		Zoom IN
+			if event.button_index == BUTTON_WHEEL_DOWN and get_scale().x > min_zoom:
+				set_scale(get_scale() - Vector3(zoom_speed, zoom_speed, zoom_speed))
 			
 func _ready():
 	rotate_y(default_camera_y)
