@@ -1,6 +1,6 @@
 extends Spatial
 
-var size = 10
+export var size = 2
 # class member variables go here, for example:
 # var a = 2
 # var b = "textvar"
@@ -11,8 +11,6 @@ func _ready():
 	
 	for x in range (size):
 		for y in range (size):
-			print(x)
-			print(y)
 			$GridMap.set_cell_item(x - size/2, 0, y - size/2, 0)
 	pass
 
