@@ -28,11 +28,11 @@ func _input(event):
 	if event is InputEventMouseButton:
 		if event.is_pressed() and not event.is_echo():
 	#		Zoom OUT
-			if event.button_index and event.button_index == BUTTON_WHEEL_UP and get_scale().x < max_zoom:
+			if event.button_index and event.button_index == BUTTON_WHEEL_DOWN and get_scale().x < max_zoom:
 				set_scale(get_scale() + Vector3(zoom_speed, zoom_speed, zoom_speed))
 
 	#		Zoom IN
-			if event.button_index == BUTTON_WHEEL_DOWN and get_scale().x > min_zoom:
+			if event.button_index == BUTTON_WHEEL_UP and get_scale().x > min_zoom:
 				set_scale(get_scale() - Vector3(zoom_speed, zoom_speed, zoom_speed))
 
 		if event.button_index == BUTTON_RIGHT:
