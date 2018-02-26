@@ -2,8 +2,8 @@ extends Spatial
 
 export var size = 2
 
-var mouse_pos_x = 0
-var mouse_pos_y = 0
+var cell_size = 3
+
 var mouse_pos = Vector2(0, 0)
 
 func _ready():
@@ -36,6 +36,6 @@ func _physics_process(delta):
 	var hit = space_state.intersect_ray(from, to)
 	if hit.size() != 0:
 		$Selector.show()
-		$Selector.set_translation(Vector3(hit.position.x, hit.position.y + 0.3, hit.position.z))
+		$Selector.set_translation(Vector3(int(hit.position.x/cell_size) * cell_size, 0.45, int(hit.position.z/cell_size) * cell_size))
 	else:
 		$Selector.hide()
