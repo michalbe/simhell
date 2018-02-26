@@ -89,7 +89,7 @@ _sections_unfolded = [ "Ambient Light", "Background" ]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
-size = 6
+size = 9
 
 [node name="GridMap" type="GridMap" parent="." index="0"]
 
