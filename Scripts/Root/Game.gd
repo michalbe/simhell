@@ -2,11 +2,13 @@ extends Spatial
 
 export var size = 2
 
-var cell_size = 3
-
+var cell_size = 0
+var cell_height = 0
 var mouse_pos = Vector2(0, 0)
 
 func _ready():
+	cell_size = $GridMap.cell_size.x
+	cell_height = $GridMap.cell_size.y
 	var tiles = $GridMap.theme.get_item_list().size()
 	for x in range (size):
 		for y in range (size):
@@ -37,7 +39,7 @@ func _physics_process(delta):
 		var hit = space_state.intersect_ray(from, to)
 		if hit.size() != 0:
 			$Selector.show()
-			$Selector.set_translation(Vector3(int(hit.position.x/cell_size) * cell_size, 0.45, int(hit.position.z/cell_size) * cell_size))
+			$Selector.set_translation(Vector3(int(hit.position.x/cell_size) * cell_size, cell_height + (cell_height/2), int(hit.position.z/cell_size) * cell_size))
 		else:
 			$Selector.hide()
 	else:
