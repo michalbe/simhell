@@ -87,9 +87,9 @@ _sections_unfolded = [ "Ambient Light", "Background" ]
 
 [node name="Game" type="Spatial" index="0"]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00994015, 0.0120878, -0.00568175 )
 script = ExtResource( 1 )
-size = 10
+_sections_unfolded = [ "Transform" ]
+size = 6
 
 [node name="GridMap" type="GridMap" parent="." index="0"]
 

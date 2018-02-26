@@ -39,7 +39,9 @@ func _physics_process(delta):
 		var hit = space_state.intersect_ray(from, to)
 		if hit.size() != 0:
 			$Selector.show()
-			$Selector.set_translation(Vector3(int(hit.position.x/cell_size) * cell_size, cell_height + (cell_height/2), int(hit.position.z/cell_size) * cell_size))
+			print(hit.position.x)
+			print(int(hit.position.x/cell_size) * cell_size + cell_size/2)
+			$Selector.set_translation(Vector3(int(round(hit.position.x/cell_size)) * cell_size + cell_size/2, cell_height + (cell_height/2), int(round(hit.position.z/cell_size)) * cell_size + cell_size/2))
 		else:
 			$Selector.hide()
 	else:

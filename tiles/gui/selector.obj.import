@@ -9,10 +9,10 @@ path="res://.import/selector.obj-f3df9785faad79cd5b8796d459177d88.mesh"
 files=[ "res://.import/selector.obj-f3df9785faad79cd5b8796d459177d88.mesh" ]
 
 source_file="res://tiles/gui/selector.obj"
-source_md5="0aeb1920a049d7712f15d43fccc20ed0"
+source_md5="9a39897baa151f4fc2065c56e867030f"
 
 dest_files=[ "res://.import/selector.obj-f3df9785faad79cd5b8796d459177d88.mesh", "res://.import/selector.obj-f3df9785faad79cd5b8796d459177d88.mesh" ]
-dest_md5="83eee5b12d2112b9bd833ed47a7b75d7"
+dest_md5="ce25197c8a5923e60ba5ff0471814eea"
 
 [params]
 
