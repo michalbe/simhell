@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/Root/Game.gd" type="Script" id=1]
 [ext_resource path="res://tiles/floor_tiles.meshlib" type="MeshLibrary" id=2]
 [ext_resource path="res://Scripts/Root/camera.gd" type="Script" id=3]
 [ext_resource path="res://StatePanel.tscn" type="PackedScene" id=4]
+[ext_resource path="res://tiles/gui/selector.obj" type="ArrayMesh" id=5]
 
 [sub_resource type="Environment" id=1]
 
@@ -151,5 +152,23 @@ far = 1000.0
 _sections_unfolded = [ "Transform" ]
 
 [node name="StatePanel" parent="." index="3" instance=ExtResource( 4 )]
+
+[node name="Selector" type="MeshInstance" parent="." index="4"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0 )
+visible = false
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = ExtResource( 5 )
+skeleton = NodePath("..")
+material/0 = null
+_sections_unfolded = [ "Transform" ]
 
 

@@ -14,6 +14,13 @@ func _ready():
 			$GridMap.set_cell_item(x - size/2, 0, y - size/2, 0) #randi() % tiles)
 	pass
 
+func _input(event):
+	if event is InputEventMouseMotion:
+#		$Selector.show()
+		pass
+#		$selector.translate
+	pass
+			
 #func _process(delta):
 #	# Called every frame. Delta is time since last frame.
 #	# Update game logic here.
