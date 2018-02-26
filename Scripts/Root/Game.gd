@@ -34,6 +34,8 @@ func _physics_process(delta):
 	
 	var space_state = get_world().get_direct_space_state()
 	var hit = space_state.intersect_ray(from, to)
-	print(hit)
 	if hit.size() != 0:
-		print(hit)
+		$Selector.show()
+		$Selector.set_translation(Vector3(hit.position.x, hit.position.y + 0.3, hit.position.z))
+	else:
+		$Selector.hide()
