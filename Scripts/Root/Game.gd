@@ -59,6 +59,8 @@ func _physics_process(delta):
 					var scale_y = abs(starting_cell.y - y)
 					scale_x = 1 if scale_x == 0 else scale_x
 					scale_y = 1 if scale_y == 0 else scale_y
+					var middle_position = (Vector2(starting_cell.x  * cell_size + cell_size/2, starting_cell.y  * cell_size + cell_size/2) - Vector2(x  * cell_size + cell_size/2, y  * cell_size + cell_size/2)) / 2 + Vector2(x  * cell_size + cell_size/2, y  * cell_size + cell_size/2)
+					$Selector.set_translation(Vector3(middle_position.x, cell_height + (cell_height/2), middle_position.y))
 					$Selector.set_scale(Vector3(scale_x, 1, scale_y))
 			else:
 				starting_cell = null
