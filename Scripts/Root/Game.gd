@@ -55,8 +55,14 @@ func _physics_process(delta):
 					starting_cell = Vector2(x, y)
 				else:
 					print("from ", starting_cell, "to ", Vector2(x, y))
+					var scale_x = abs(starting_cell.x - x)
+					var scale_y = abs(starting_cell.y - y)
+					scale_x = 1 if scale_x == 0 else scale_x
+					scale_y = 1 if scale_y == 0 else scale_y
+					$Selector.set_scale(Vector3(scale_x, 1, scale_y))
 			else:
 				starting_cell = null
+				$Selector.set_scale(Vector3(1, 1, 1))
 				# Moving the selector
 				$Selector.show()
 				if (x > size/2 || x < -size/2 || y < -size/2 || y > size/2) :
