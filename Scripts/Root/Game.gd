@@ -29,7 +29,7 @@ func _input(event):
 	if event is InputEventMouseMotion:
 		mouse_pos = event.position
 	elif event is InputEventMouseButton and event.is_pressed() and not event.is_echo():
-		is_mouse_button_pressed = event.button_index == BUTTON_RIGHT
+		is_mouse_button_pressed = event.button_index == BUTTON_LEFT
 	else:
 		is_mouse_button_pressed = false
 			
@@ -46,14 +46,23 @@ func _physics_process(delta):
 		var space_state = get_world().get_direct_space_state()
 		var hit = space_state.intersect_ray(from, to)
 		if hit.size() != 0:
-			print(is_mouse_button_pressed)
-			$Selector.show()
 			var x = int(round(hit.position.x/cell_size))
 			var y = int(round(hit.position.z/cell_size))
-			if (x > size/2 || x < -size/2 || y < -size/2 || y > size/2) :
-				pass
+			if is_mouse_button_pressed:
+				# DRAWING
+				if not starting_cell:
+					#DRAWING HAS JUST STARTED
+					starting_cell = Vector2(x, y)
+				else:
+					print("from ", starting_cell, "to ", Vector2(x, y))
 			else:
-				$Selector.set_translation(Vector3(x  * cell_size + cell_size/2, cell_height + (cell_height/2), y  * cell_size + cell_size/2))
+				starting_cell = null
+				# Moving the selector
+				$Selector.show()
+				if (x > size/2 || x < -size/2 || y < -size/2 || y > size/2) :
+					pass
+				else:
+					$Selector.set_translation(Vector3(x  * cell_size + cell_size/2, cell_height + (cell_height/2), y  * cell_size + cell_size/2))
 		else:
 			$Selector.hide()
 	else:
