@@ -5,6 +5,9 @@ export var size = 2
 var cell_size = 0
 var cell_height = 0
 var mouse_pos = Vector2(0, 0)
+var is_mouse_button_pressed = false
+var starting_cell
+var end_cell
 
 func _ready():
 	cell_size = $GridMap.cell_size.x
@@ -25,6 +28,11 @@ func _ready():
 func _input(event):
 	if event is InputEventMouseMotion:
 		mouse_pos = event.position
+	elif event is InputEventMouseButton and event.is_pressed() and not event.is_echo():
+		is_mouse_button_pressed = event.button_index == BUTTON_RIGHT
+	else:
+		is_mouse_button_pressed = false
+			
 
 func _physics_process(delta):
 	if $StatePanel.get_state() == $StatePanel.STATES.BUILDING:
@@ -38,6 +46,7 @@ func _physics_process(delta):
 		var space_state = get_world().get_direct_space_state()
 		var hit = space_state.intersect_ray(from, to)
 		if hit.size() != 0:
+			print(is_mouse_button_pressed)
 			$Selector.show()
 			var x = int(round(hit.position.x/cell_size))
 			var y = int(round(hit.position.z/cell_size))
