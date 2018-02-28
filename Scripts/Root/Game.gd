@@ -85,24 +85,27 @@ func spawn_building(start_point, end_point):
 	var width = abs(start_point.x - end_point.x)
 	var height = abs(start_point.y - end_point.y)
 	
+	var draw_from_x = min(start_point.x, end_point.x)
+	var draw_from_y = min(start_point.y, end_point.y)
+	
 	for x in range (width):
 		for y in range (height):
 			if x == 0:
 				if y == 0:
-					$WallMap.set_cell_item(start_point.x + x, 0, start_point.y + y, 0, 0)
+					$WallMap.set_cell_item(draw_from_x + x, 0, draw_from_y + y, 0, 0)
 				elif y == height - 1:
-					$WallMap.set_cell_item(start_point.x + x, 0, start_point.y + y, 0, 16)
+					$WallMap.set_cell_item(draw_from_x + x, 0, draw_from_y + y, 0, 16)
 				else:
-					$WallMap.set_cell_item(start_point.x + x, 0, start_point.y + y, 1, 16)
+					$WallMap.set_cell_item(draw_from_x + x, 0, draw_from_y + y, 1, 16)
 			elif x == width-1:
 				if y == 0:
-					$WallMap.set_cell_item(start_point.x + x, 0, start_point.y + y, 0, 22)
+					$WallMap.set_cell_item(draw_from_x + x, 0, draw_from_y + y, 0, 22)
 				elif y == height - 1:
-					$WallMap.set_cell_item(start_point.x + x, 0, start_point.y + y, 0, 10)
+					$WallMap.set_cell_item(draw_from_x + x, 0, draw_from_y + y, 0, 10)
 				else:
-					$WallMap.set_cell_item(start_point.x + x, 0, start_point.y + y, 1, 22)
+					$WallMap.set_cell_item(draw_from_x + x, 0, draw_from_y + y, 1, 22)
 			elif y == 0:
-				$WallMap.set_cell_item(start_point.x + x, 0, start_point.y + y, 1, 0)
+				$WallMap.set_cell_item(draw_from_x + x, 0, draw_from_y + y, 1, 0)
 			elif y == height-1:		
-				$WallMap.set_cell_item(start_point.x + x, 0, start_point.y + y, 1, 10)
+				$WallMap.set_cell_item(draw_from_x + x, 0, draw_from_y + y, 1, 10)
 	
