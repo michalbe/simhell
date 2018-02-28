@@ -108,4 +108,6 @@ func spawn_building(start_point, end_point):
 				$WallMap.set_cell_item(draw_from_x + x, 0, draw_from_y + y, 1, 0)
 			elif y == height-1:		
 				$WallMap.set_cell_item(draw_from_x + x, 0, draw_from_y + y, 1, 10)
+			else:
+				$WallMap.set_cell_item(draw_from_x + x, 0, draw_from_y + y, 2, 0)
 	
