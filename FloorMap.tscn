@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/Root/Game.gd" type="Script" id=1]
 [ext_resource path="res://tiles/floor_tiles.meshlib" type="MeshLibrary" id=2]
 [ext_resource path="res://Scripts/Root/camera.gd" type="Script" id=3]
 [ext_resource path="res://StatePanel.tscn" type="PackedScene" id=4]
 [ext_resource path="res://tiles/gui/selector.obj" type="ArrayMesh" id=5]
+[ext_resource path="res://tiles/walls.meshlib" type="MeshLibrary" id=6]
 
 [sub_resource type="Environment" id=1]
 
@@ -111,11 +112,31 @@ __meta__ = {
 "_editor_floor_": Vector3( 0, 0, 0 )
 }
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="1"]
+[node name="GridMap2" type="GridMap" parent="." index="1"]
+
+theme = ExtResource( 2 )
+cell_size = Vector3( 3, 0.3, 3 )
+cell_octant_size = 8
+cell_center_x = true
+cell_center_y = false
+cell_center_z = true
+cell_scale = 1.0
+collision_layer = 1
+collision_mask = 1
+data = {
+"cells": PoolIntArray(  )
+}
+_sections_unfolded = [ "Cell" ]
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 0, 0 )
+}
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="2"]
 
 environment = SubResource( 1 )
 
-[node name="CameraGimball" type="Spatial" parent="." index="2"]
+[node name="CameraGimball" type="Spatial" parent="." index="3"]
 
 transform = Transform( 1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 0, 0, 0 )
 script = ExtResource( 3 )
@@ -150,9 +171,9 @@ near = 0.05
 far = 1000.0
 _sections_unfolded = [ "Transform" ]
 
-[node name="StatePanel" parent="." index="3" instance=ExtResource( 4 )]
+[node name="StatePanel" parent="." index="4" instance=ExtResource( 4 )]
 
-[node name="Selector" type="MeshInstance" parent="." index="4"]
+[node name="Selector" type="MeshInstance" parent="." index="5"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0 )
 visible = false
@@ -169,5 +190,25 @@ mesh = ExtResource( 5 )
 skeleton = NodePath("..")
 material/0 = null
 _sections_unfolded = [ "Geometry", "Transform", "Visibility" ]
+
+[node name="WallMap" type="GridMap" parent="." index="6"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7, 0 )
+theme = ExtResource( 6 )
+cell_size = Vector3( 3, 3, 3 )
+cell_octant_size = 8
+cell_center_x = true
+cell_center_y = true
+cell_center_z = true
+cell_scale = 1.0
+collision_layer = 1
+collision_mask = 1
+data = {
+"cells": PoolIntArray(  )
+}
+_sections_unfolded = [ "Cell", "Transform" ]
+__meta__ = {
+"_editor_clip_": 0
+}
 
 

@@ -54,7 +54,7 @@ func _physics_process(delta):
 					#DRAWING HAS JUST STARTED
 					starting_cell = Vector2(x, y)
 				else:
-					print("from ", starting_cell, "to ", Vector2(x, y))
+					end_cell = Vector2(x, y)
 					var scale_x = abs(starting_cell.x - x)
 					var scale_y = abs(starting_cell.y - y)
 					scale_x = 1 if scale_x == 0 else scale_x
@@ -65,7 +65,10 @@ func _physics_process(delta):
 						$Selector.set_scale(Vector3(scale_x, 1, scale_y))
 			else:
 				# BUILDING LOGIC HERE
+				if starting_cell and end_cell:
+					spawn_building(starting_cell, end_cell)
 				starting_cell = null
+				end_cell = null
 				$Selector.set_scale(Vector3(1, 1, 1))
 				# Moving the selector
 				$Selector.show()
@@ -77,3 +80,19 @@ func _physics_process(delta):
 			$Selector.hide()
 	else:
 		$Selector.hide()	
+
+func spawn_building(start_point, end_point):
+	var width = abs(start_point.x - end_point.x)
+	var height = abs(start_point.y - end_point.y)
+	
+	for x in range (width):
+		for y in range (height):
+			if x == 0:
+				$WallMap.set_cell_item(start_point.x + x, 0, start_point.y + y, 1, 16)
+			elif x == width-1:
+				$WallMap.set_cell_item(start_point.x + x, 0, start_point.y + y, 1, 22)
+			elif y == 0:
+				$WallMap.set_cell_item(start_point.x + x, 0, start_point.y + y, 1, 0)
+			elif y == height-1:
+				$WallMap.set_cell_item(start_point.x + x, 0, start_point.y + y, 1, 10)
+	
