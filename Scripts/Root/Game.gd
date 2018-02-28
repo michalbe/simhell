@@ -64,6 +64,7 @@ func _physics_process(delta):
 						$Selector.set_translation(Vector3(middle_position.x - cell_size/2, cell_height + (cell_height/2), middle_position.y - cell_size/2))
 						$Selector.set_scale(Vector3(scale_x, 1, scale_y))
 			else:
+				# BUILDING LOGIC HERE
 				starting_cell = null
 				$Selector.set_scale(Vector3(1, 1, 1))
 				# Moving the selector
