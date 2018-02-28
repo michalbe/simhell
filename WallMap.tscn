@@ -16,7 +16,7 @@ points = PoolVector3Array( -1.5, 3.75, -1, -1.5, 0, -1, -1.5, 3.75, -1.5, -1.5, 
 
 points = PoolVector3Array( 1.5, 0, 1.5, -1.5, 0, -1.5, 1.5, 0, -1.5, -1.5, 0, 1.5 )
 
-[node name="Spatial" type="Spatial" index="0"]
+[node name="Spatial" type="Spatial"]
 
 [node name="MeshInstance2" type="MeshInstance" parent="." index="0"]
 
