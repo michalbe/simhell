@@ -124,7 +124,7 @@ cell_scale = 1.0
 collision_layer = 1
 collision_mask = 1
 data = {
-"cells": PoolIntArray(  )
+"cells": PoolIntArray( 2, 9, 655360 )
 }
 _sections_unfolded = [ "Cell" ]
 __meta__ = {
