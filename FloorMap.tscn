@@ -112,31 +112,11 @@ __meta__ = {
 "_editor_floor_": Vector3( 0, 0, 0 )
 }
 
-[node name="GridMap2" type="GridMap" parent="." index="1"]
-
-theme = ExtResource( 2 )
-cell_size = Vector3( 3, 0.3, 3 )
-cell_octant_size = 8
-cell_center_x = true
-cell_center_y = false
-cell_center_z = true
-cell_scale = 1.0
-collision_layer = 1
-collision_mask = 1
-data = {
-"cells": PoolIntArray( 2, 9, 655360 )
-}
-_sections_unfolded = [ "Cell" ]
-__meta__ = {
-"_editor_clip_": 0,
-"_editor_floor_": Vector3( 0, 0, 0 )
-}
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="2"]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="1"]
 
 environment = SubResource( 1 )
 
-[node name="CameraGimball" type="Spatial" parent="." index="3"]
+[node name="CameraGimball" type="Spatial" parent="." index="2"]
 
 transform = Transform( 1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 0, 0, 0 )
 script = ExtResource( 3 )
@@ -171,9 +151,9 @@ near = 0.05
 far = 1000.0
 _sections_unfolded = [ "Transform" ]
 
-[node name="StatePanel" parent="." index="4" instance=ExtResource( 4 )]
+[node name="StatePanel" parent="." index="3" instance=ExtResource( 4 )]
 
-[node name="Selector" type="MeshInstance" parent="." index="5"]
+[node name="Selector" type="MeshInstance" parent="." index="4"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0 )
 visible = false
@@ -191,7 +171,7 @@ skeleton = NodePath("..")
 material/0 = null
 _sections_unfolded = [ "Geometry", "Transform", "Visibility" ]
 
-[node name="WallMap" type="GridMap" parent="." index="6"]
+[node name="WallMap" type="GridMap" parent="." index="5"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7, 0 )
 theme = ExtResource( 6 )
